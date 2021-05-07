@@ -112,8 +112,8 @@
       };
     }
     var rows = sortObj(trows);
-    console.log(data);
     console.log(rows);
+    window.location = 'data:application/xml;base64,'+ btoa(data);
   }
 
 })();
