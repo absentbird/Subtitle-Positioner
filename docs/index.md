@@ -45,7 +45,7 @@ Use this form to adjust the positioning of the subtitles. You can specify start 
 </tr>
 </table>
 
-*leave times blank to effect entire file*
+*leave times blank to affect entire file*
 
 <button id="add-row">Add Row</button>
 
