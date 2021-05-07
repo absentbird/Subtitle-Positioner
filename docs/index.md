@@ -68,6 +68,7 @@ The VTT file will contain the same subtitles, but with added positioning informa
   document.querySelector('#srtupload').addEventListener('change', handleSrtUpload, false);
   document.querySelector('#timingupload').addEventListener('change', handleCsvUpload, false);
   document.querySelector('#add-row').addEventListener('click', addPositioningRow, false);
+  document.querySelector('#convert').addEventListener('click', downloadVtt, false);
   document.querySelector('.delete-row').addEventListener('click', removerow, false);
   document.body.addEventListener( 'click', function ( event ) {
     if(event.srcElement.classList.contains('delete-row')) {
@@ -87,7 +88,7 @@ The VTT file will contain the same subtitles, but with added positioning informa
 
   function handleCsvUpload(event) {
     var file = event.target.files[0];
-    srtreader.readAsText(file);
+    csvreader.readAsText(file);
   }
 
   function handleSrtRead(event) {
@@ -129,7 +130,11 @@ The VTT file will contain the same subtitles, but with added positioning informa
   }
 
   function getsrt() {
-    return JSON.parse(localStorage.getItem(srtfile))
+    return localStorage.getItem(srtfile);
+  }
+
+  function downloadVtt(event) {
+    console.log(getsrt());
   }
 
 })();
