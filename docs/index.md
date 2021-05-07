@@ -7,7 +7,12 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 <label for="srtfile">SRT file:</label>
 <input type="file" name="srtfile" id="srtupload">
 
-### Set Positioning
+#### Upload Timing (optional)
+
+<label for="timingcsv">CSV timing file:</label>
+<input type="file" name="timingcsv" id="timingupload">
+
+### Adjust Positioning
 
 <table id="timingtable">
 <tr><th>Start</th><th>Stop</th><th>Position</th></tr>
@@ -20,16 +25,11 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 
 <button id="add-row">Add Row</button>
 
-#### Upload Timing (optional)
-
-<label for="timingcsv">CSV timing file:</label>
-<input type="file" name="timingcsv" id="timingupload">
-
 ### Download VTT File
 
 The VTT file will contain the same subtitles, but with added positioning information.
 
-<button id="convert">Download VTT</button>
+<button id="convert" disabled>Download VTT</button>
 
 <script>
 (function() {
