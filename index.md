@@ -1,10 +1,8 @@
-## Welcome to GitHub Pages
+## Add positioning to SRT subtitles for Youtube
 
-You can use the [editor on GitHub](https://github.com/absentbird/srt-2-vtt-positioning/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Youtube uses VTT files for subtitles with enhanced features such as positioning. If you have an SRT file that you'd like to use with a video, but you'd like to position the subtitles, you can use this tool to add positioning information.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
+### Upload SRT
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
