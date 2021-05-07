@@ -55,7 +55,7 @@ The VTT file will contain the same subtitles, but with added positioning informa
 
 <button id="convert">Download VTT</button>
 
-<script src="https://raw.githubusercontent.com/mholt/PapaParse/master/papaparse.js"></script>
+<script src="papaparse.min.js"></script>
 <script>
 (function() {
   document.getElementById("convert").disabled = true;
