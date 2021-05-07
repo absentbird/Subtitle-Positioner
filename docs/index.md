@@ -4,7 +4,7 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 
 ### Upload SRT
 
-<label for="srtfile">SRT<sup>1</sup> file:</label>
+<label for="srtfile">SRT file:</label>
 <input type="file" name="srtfile" id="srtupload">
 
 ---
