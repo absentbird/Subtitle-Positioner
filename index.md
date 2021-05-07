@@ -4,38 +4,53 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 
 ### Upload SRT
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<label for="srtfile">SRT file:</label>
+<input type="file" name="srtfile" id="srtupload">
 
-```markdown
-Syntax highlighted code block
+### Set Positioning
 
-# Header 1
-## Header 2
-### Header 3
+<table>
+<tr><th>Start</th><th>End</th><th>Position</th></tr>
+<tr id="firstrow">
+<td><input type="text" id="start1" name="start" placeholder="00:01:02.980" /></td>
+<td><input type="text" id="end1" name="end" placeholder="00:01:04.630" /></td>
+<td><input type="text" id="position1" name="position" placeholder="left" /></td>
+</tr>
 
-- Bulleted
-- List
+<button id="add-row">Add Row</button>
 
-1. Numbered
-2. List
+#### Upload Timing (optional)
 
-**Bold** and _Italic_ and `Code` text
+<label for="timingcsv">CSV timing file:</label>
+<input type="file" name="timingcsv" id="timingupload">
 
-[Link](url) and ![Image](src)
-```
+### Download VTT File
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+The VTT file will contain the same subtitles, but with added positioning information.
 
-### Jekyll Themes
+<button id="convert">Download VTT</button>
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/absentbird/srt-2-vtt-positioning/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
-
-<div id="text"></div>
- 
 <script>
-document.getElementById("text").innerHTML = "Javascript Test";
+(function() {
+  var srtfile = 'captions.srt';
+  document.querySelector('#srtupload').addEventListener('change', handleSrtUpload, false);
+
+  var reader = new FileReader();
+  reader.onload = handleSrtRead;
+
+  function handleSrtUpload(event) {
+    var file = event.target.files[0];
+    reader.readAsText(file);
+  }
+  
+  function handleSrtRead(event) {
+    var save = JSON.parse(event.target.result);
+    window.localStorage.setItem(srtfile, JSON.stringify(save));
+  }
+  
+  function getsrt() {
+    return JSON.parse(localStorage.getItem(srtfile))
+  }
+
+})();
 </script>
