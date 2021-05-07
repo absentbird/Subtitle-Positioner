@@ -89,12 +89,28 @@
     addrow();
   }
 
-  function getsrt() {
-    return localStorage.getItem(srtfile);
+  function sortObj(obj) {
+    return Object.keys(obj).sort().reduce(function (result, key) {
+      result[key] = obj[key];
+      return result;
+    }, {});
   }
 
   function downloadVtt(event) {
-    console.log(getsrt());
+    var data = localStorage.getItem(srtfile);
+    var trows = {};
+    var table = document.getElementById("timingtable");
+    for (var i = 1, row; row = table.rows[i]; i++) {
+      var start = row.cells[0];
+      var stop = row.cells[1];
+      var position = row.cells[2];
+      trows[start] = {
+        stop,
+        position
+      };
+    }
+    var rows = sortObj(trows);
+    console.log(data, rows);
   }
 
 })();
