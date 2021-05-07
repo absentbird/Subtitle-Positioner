@@ -110,7 +110,8 @@
       };
     }
     var rows = sortObj(trows);
-    console.log(data, rows);
+    console.log(data);
+    console.log(rows);
   }
 
 })();
