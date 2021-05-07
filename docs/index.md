@@ -28,8 +28,20 @@ Use this form to adjust the positioning of the subtitles. You can specify start 
 <tr id="firstrow">
 <td><input type="text" id="start1" name="start" placeholder="00:01:02.980" size="12" /></td>
 <td><input type="text" id="stop1" name="end" placeholder="00:01:04.630" size="12" /></td>
-<td><input type="text" id="position1" name="position" placeholder="left" size="8" /></td>
-<td><button class="deleterow" onClick="removerow(this);">❌</button></td>
+<td>
+  <select id="position1" name="position">
+    <option value="top-left">Top Left</option>
+    <option value="top-center">Top Center</option>
+    <option value="top-right">Top Right</option>
+    <option value="middle-right">Middle Left</option>
+    <option value="middle-center">Middle Center</option>
+    <option value="middle-right">Middle Right</option>
+    <option value="bottom-left">Bottom Left</option>
+    <option value="bottom-right">Bottom Center</option>
+    <option value="bottom-right">Bottom Right</option>
+  </select>
+</td>
+<td><button class="deleterow">❌</button></td>
 </tr>
 </table>
 
@@ -48,6 +60,7 @@ The VTT file will contain the same subtitles, but with added positioning informa
   var srtfile = 'captions.srt';
   document.querySelector('#srtupload').addEventListener('change', handleSrtUpload, false);
   document.querySelector('#add-row').addEventListener('click', addPositioningRow, false);
+  document.querySelector('#delete-row').addEventListener('click', removerow, false);
 
   var reader = new FileReader();
   reader.onload = handleSrtRead;
@@ -56,6 +69,10 @@ The VTT file will contain the same subtitles, but with added positioning informa
     var file = event.target.files[0];
     reader.readAsText(file);
     document.getElementById("convert").disabled = false;
+  }
+
+  function removerow(event) {
+    event.target.closest("tr").remove();
   }
 
   var rowcount = 1;
@@ -78,10 +95,6 @@ The VTT file will contain the same subtitles, but with added positioning informa
   function handleSrtRead(event) {
     var save = JSON.parse(event.target.result);
     window.localStorage.setItem(srtfile, JSON.stringify(save));
-  }
-  
-  function removerow(element) {
-    element.closest("tr").remove();
   }
 
   function getsrt() {
