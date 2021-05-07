@@ -29,10 +29,12 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 
 The VTT file will contain the same subtitles, but with added positioning information.
 
-<button id="convert" disabled>Download VTT</button>
+<button id="convert">Download VTT</button>
 
 <script>
 (function() {
+  document.getElementById("convert").disabled = true;
+
   var srtfile = 'captions.srt';
   document.querySelector('#srtupload').addEventListener('change', handleSrtUpload, false);
   document.querySelector('#add-row').addEventListener('click', addPositioningRow, false);
@@ -43,6 +45,7 @@ The VTT file will contain the same subtitles, but with added positioning informa
   function handleSrtUpload(event) {
     var file = event.target.files[0];
     reader.readAsText(file);
+    document.getElementById("convert").disabled = false;
   }
 
   var rowcount = 1;
