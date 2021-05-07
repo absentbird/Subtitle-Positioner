@@ -13,7 +13,7 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 <tr><th>Start</th><th>End</th><th>Position</th></tr>
 <tr id="firstrow">
 <td><input type="text" id="start1" name="start" placeholder="00:01:02.980" /></td>
-<td><input type="text" id="end1" name="end" placeholder="00:01:04.630" /></td>
+<td><input type="text" id="stop1" name="end" placeholder="00:01:04.630" /></td>
 <td><input type="text" id="position1" name="position" placeholder="left" /></td>
 </tr>
 </table>
@@ -45,11 +45,16 @@ The VTT file will contain the same subtitles, but with added positioning informa
     reader.readAsText(file);
   }
 
+  var rowcount = 1;
   function addPositioningRow(event) {
     row = document.querySelector('#timingtable').insertRow(-1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
+    rowcount++;
+    cell1.innerHTML = '<input type="text" id="start'+rowcount+'" name="start" placeholder="00:01:02.980" />';
+    cell2.innerHTML = '<input type="text" id="stop'+rowcount+'" name="start" placeholder="00:01:04.630" />';
+    cell3.innerHTML = '<input type="text" id="position'+rowcount+'" name="start" placeholder="left" />';
   }
   
   function handleSrtRead(event) {
