@@ -18,9 +18,18 @@
     };
   });
   var srtreader = new FileReader();
-  srtreader.onload = handleSrtRead;
   var csvreader = new FileReader();
   csvreader.onload = handleCsvRead;
+
+  srtreader.onload = (event) => {
+    const file = event.target.result;
+    const allLines = file.split(/\r\n|\n/);
+    allLines.forEach((line) => {
+        console.log(line);
+    });
+    var save = event.target.result;
+    window.localStorage.setItem(srtfile, save);
+  };
 
   function handleSrtUpload(event) {
     var file = event.target.files[0];
@@ -32,11 +41,6 @@
   function handleCsvUpload(event) {
     var file = event.target.files[0];
     csvreader.readAsText(file);
-  }
-
-  function handleSrtRead(event) {
-    var save = event.target.result;
-    window.localStorage.setItem(srtfile, save);
   }
 
   function handleCsvRead(event) {
@@ -115,6 +119,7 @@
     }
     var rows = sortObj(trows);
     console.log(rows);
+    var pattern = /(\d+)\n([\d:,]+)\s+-{2}\>\s+([\d:,]+)\n/gm;
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
     hiddenElement.target = '_blank';
