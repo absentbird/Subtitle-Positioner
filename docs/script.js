@@ -1,5 +1,6 @@
 (function() {
   document.getElementById("convert").disabled = true;
+  var outputname = "filename";
 
   function removerow(event) {
     event.srcElement.closest("tr").remove();
@@ -23,6 +24,7 @@
 
   function handleSrtUpload(event) {
     var file = event.target.files[0];
+    outputname = file.value;
     srtreader.readAsText(file);
     document.getElementById("convert").disabled = false;
   }
@@ -116,7 +118,7 @@
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
     hiddenElement.target = '_blank';
-    hiddenElement.download = 'filename.vtt';
+    hiddenElement.download = outputname+'.vtt';
     hiddenElement.click();
   }
 
