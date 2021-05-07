@@ -33,7 +33,11 @@
 
   function handleSrtUpload(event) {
     var file = event.target.files[0];
-    console.log(file);
+    if (file.substr(file.length - 4) === ".srt") {
+      outputname = file.name.slice(0, -4);
+    } else {
+      outputname = file.name;      
+    }
     srtreader.readAsText(file);
     document.getElementById("convert").disabled = false;
   }
