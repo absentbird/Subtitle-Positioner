@@ -1,6 +1,6 @@
 ## Add positioning to SRT subtitles for Youtube
 
-Youtube uses VTT files for subtitles with enhanced features such as positioning. If you have an SRT file that you'd like to use with a video, but you'd like to position the subtitles, you can use this tool to add positioning information.
+Youtube uses VTT files for subtitles with enhanced features such as positioning. If you have an SRT file, but you'd like to position the subtitles, you can use this tool to add positioning information.
 
 ### Upload SRT
 
