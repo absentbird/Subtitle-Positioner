@@ -23,7 +23,7 @@
 
   function handleSrtUpload(event) {
     var file = event.target.files[0];
-    reader.readAsText(file);
+    srtreader.readAsText(file);
     document.getElementById("convert").disabled = false;
   }
 
