@@ -37,13 +37,15 @@ Use this form to adjust the positioning of the subtitles. You can specify start 
     <option value="middle-center">Middle Center</option>
     <option value="middle-right">Middle Right</option>
     <option value="bottom-left">Bottom Left</option>
-    <option value="bottom-right">Bottom Center</option>
+    <option value="bottom-right" selected>Bottom Center</option>
     <option value="bottom-right">Bottom Right</option>
   </select>
 </td>
 <td><button class="delete-row">❌</button></td>
 </tr>
 </table>
+
+*leave times blank to effect entire file*
 
 <button id="add-row">Add Row</button>
 
