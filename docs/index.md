@@ -58,14 +58,18 @@ The VTT file will contain the same subtitles, but with added positioning informa
   document.getElementById("convert").disabled = true;
 
   function removerow(event) {
-    event.target.closest("tr").remove();
+    event.srcElement.closest("tr").remove();
   }
 
   var srtfile = 'captions.srt';
   document.querySelector('#srtupload').addEventListener('change', handleSrtUpload, false);
   document.querySelector('#add-row').addEventListener('click', addPositioningRow, false);
   document.querySelector('.delete-row').addEventListener('click', removerow, false);
-
+  document.body.addEventListener( 'click', function ( event ) {
+    if(event.srcElement.classList.contains('delete-row')) {
+      removerow(event);
+    };
+  });
   var reader = new FileReader();
   reader.onload = handleSrtRead;
 
