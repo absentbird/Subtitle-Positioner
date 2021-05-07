@@ -26,8 +26,8 @@ Use this form to adjust the positioning of the subtitles. You can specify start 
 <table id="timingtable">
 <tr><th>Start</th><th>Stop</th><th>Position</th><th></th></tr>
 <tr id="firstrow">
-<td><input type="text" id="start1" name="start" size="12" /></td>
-<td><input type="text" id="stop1" name="end" size="12" /></td>
+<td><input type="text" id="start1" name="start" placeholder="00:01:02.980" size="12" /></td>
+<td><input type="text" id="stop1" name="stop" placeholder="00:01:04.630" size="12" /></td>
 <td>
   <select id="position1" name="position">
     <option value="top-left">Top Left</option>
