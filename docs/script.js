@@ -2,6 +2,18 @@
   document.getElementById("convert").disabled = true;
   var outputname = "filename";
 
+  var positionset = [
+    'top-left': " line:5% align:left",
+    'top-center': " line:5%",
+    'top-right': " line:5% align:right",
+    'middle-left': " line:45% align:left",
+    'middle-center': " line:45%",
+    'middle-right': " line:45% align:right",
+    'bottom-left': " align:left",
+    'bottom-center': "",
+    'bottom-right': " align:right"
+  ];
+
   function removerow(event) {
     event.srcElement.closest("tr").remove();
   }
@@ -108,6 +120,7 @@
 
   function downloadVtt(event) {
     var data = localStorage.getItem(srtfile);
+    data = "WEBVTT\n\n";
     var trows = {};
     const starts = document.getElementsByName("start");
     const stops = document.getElementsByName("stop");
@@ -122,7 +135,32 @@
       };
     }
     var rows = sortObj(trows);
-    console.log(rows);
+    for (const [key, value] of Object.entries(trows)) {
+      console.log(`${key}: ${value}`);
+    }
+    var cycle = 0;
+    for (var i = 0; i < srtlines.length; i++) {
+      console.log(srtlines[i]);
+      if (srtlines[i] === "") {
+        cycle = 0;
+        continue;
+      }
+      if (cycle === 0) {
+        cycle++;
+        continue;
+      }
+      if (cycle === 1) {
+        cycle++;
+        var ts = srtlines
+        data += srtlines[i] + "\n"
+        continue;
+      }
+      if (cycle >= 2) {
+        cycle++;
+        data += srtlines[i] + "\n"
+        continue;
+      }
+    }    
     var pattern = /(\d+)\n([\d:,]+)\s+-{2}\>\s+([\d:,]+)\n/gm;
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
