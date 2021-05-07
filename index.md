@@ -4,6 +4,12 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 
 ### Upload SRT
 
+<div id="text"></div>
+ 
+<script>
+document.getElementById("text").innerHTML = "Javascript Test";
+</script>
+
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
