@@ -113,7 +113,7 @@
     }
     var rows = sortObj(trows);
     console.log(rows);
-    window.location = 'data:application/xml;base64,'+ btoa(data);
+    window.location = 'data:application/vtt;charset=utf-8,' + data;
   }
 
 })();
