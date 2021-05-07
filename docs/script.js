@@ -20,15 +20,15 @@
   var srtreader = new FileReader();
   var csvreader = new FileReader();
   csvreader.onload = handleCsvRead;
+  var srtlines = [];
 
   srtreader.onload = (event) => {
     const file = event.target.result;
     const allLines = file.split(/\r\n|\n/);
     allLines.forEach((line) => {
-        console.log(line);
+        srtlines.push(line);
     });
-    var save = event.target.result;
-    window.localStorage.setItem(srtfile, save);
+    window.localStorage.setItem(srtfile, file);
   };
 
   function handleSrtUpload(event) {
