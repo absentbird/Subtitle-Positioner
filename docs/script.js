@@ -41,10 +41,9 @@
     Papa.parse(event.target.result, {
       step: function(row) {
         console.log("Row:", row.data);
-        if (len(row) != 3) {
-          continue;
+        if (row.length === 3) {
+          addrow(row[0],row[1],row[2]);          
         }
-        addrow(row[0],row[1],row[2]);
       },
       complete: function() {
         console.log("Done processing CSV timings.");
