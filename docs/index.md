@@ -4,15 +4,23 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 
 ### Upload SRT
 
+This is the base subtitle file, it's essentially just a text file with timings for the captioning.
+
 <label for="srtfile">SRT file:</label>
 <input type="file" name="srtfile" id="srtupload">
 
 #### Upload Timing (optional)
 
+To save time you can upload a CSV with positions. It should be formatted as follows: start, stop, position  
+
+If recognized, the timings will be loaded into the form below once the file is uploaded.
+
 <label for="timingcsv">CSV timing file:</label>
 <input type="file" name="timingcsv" id="timingupload">
 
 ### Adjust Positioning
+
+Use this form to adjust the positioning of the subtitles. You can specify start and stop times to allow the subtitles to move to different positions throughout the video.
 
 <table id="timingtable">
 <tr><th>Start</th><th>Stop</th><th>Position</th></tr>
