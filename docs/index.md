@@ -55,6 +55,7 @@ The VTT file will contain the same subtitles, but with added positioning informa
 
 <button id="convert">Download VTT</button>
 
+<script src="https://raw.githubusercontent.com/mholt/PapaParse/master/papaparse.js"></script>
 <script>
 (function() {
   document.getElementById("convert").disabled = true;
@@ -65,6 +66,7 @@ The VTT file will contain the same subtitles, but with added positioning informa
 
   var srtfile = 'captions.srt';
   document.querySelector('#srtupload').addEventListener('change', handleSrtUpload, false);
+  document.querySelector('#timingupload').addEventListener('change', handleCsvUpload, false);
   document.querySelector('#add-row').addEventListener('click', addPositioningRow, false);
   document.querySelector('.delete-row').addEventListener('click', removerow, false);
   document.body.addEventListener( 'click', function ( event ) {
@@ -72,8 +74,10 @@ The VTT file will contain the same subtitles, but with added positioning informa
       removerow(event);
     };
   });
-  var reader = new FileReader();
-  reader.onload = handleSrtRead;
+  var srtreader = new FileReader();
+  srtreader.onload = handleSrtRead;
+  var csvreader = new FileReader();
+  csvreader.onload = handleCsvRead;
 
   function handleSrtUpload(event) {
     var file = event.target.files[0];
@@ -81,10 +85,32 @@ The VTT file will contain the same subtitles, but with added positioning informa
     document.getElementById("convert").disabled = false;
   }
 
+  function handleCsvUpload(event) {
+    var file = event.target.files[0];
+    srtreader.readAsText(file);
+  }
+
+  function handleSrtRead(event) {
+    var save = event.target.result;
+    window.localStorage.setItem(srtfile, save);
+  }
+
+  function handleCsvRead(event) {
+    Papa.parse(event.target.result, {
+      step: function(row) {
+        console.log("Row:", row.data);
+      },
+      complete: function() {
+        console.log("Done processing CSV timings.");
+      }
+    });
+  }
+
   var rowcount = 1;
   var c1blank = document.getElementById('start1');
   var c2blank = document.getElementById('stop1')
   var c3blank = document.getElementById('position1')
+  
   function addPositioningRow(event) {
     row = document.querySelector('#timingtable').insertRow(-1);
     var cell1 = row.insertCell(0);
@@ -100,11 +126,6 @@ The VTT file will contain the same subtitles, but with added positioning informa
     cell3.id = "position"+rowcount;
     cell4.innerHTML = '<button class="delete-row">❌</button>';
     row.append
-  }
-  
-  function handleSrtRead(event) {
-    var save = JSON.parse(event.target.result);
-    window.localStorage.setItem(srtfile, JSON.stringify(save));
   }
 
   function getsrt() {
