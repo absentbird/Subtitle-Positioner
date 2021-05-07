@@ -66,9 +66,12 @@ The VTT file will contain the same subtitles, but with added positioning informa
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     rowcount++;
-    cell1.innerHTML = '<input type="text" id="start'+rowcount+'" name="start" placeholder="00:01:02.980" />';
-    cell2.innerHTML = '<input type="text" id="stop'+rowcount+'" name="start" placeholder="00:01:04.630" />';
-    cell3.innerHTML = '<input type="text" id="position'+rowcount+'" name="start" placeholder="left" />';
+    cell1.innerHTML = document.getElementById('start1').innerHTML;
+    cell1.id = "start"+rowcount;
+    cell2.innerHTML = document.getElementById('stop1').innerHTML;
+    cell2.id = "stop"+rowcount;
+    cell3.innerHTML = document.getElementById('position1').innerHTML;
+    cell3.id = "position"+rowcount;
     cell4.innerHTML = '<button class="deleterow" onClick="removerow(this);">❌</button>';
   }
   
