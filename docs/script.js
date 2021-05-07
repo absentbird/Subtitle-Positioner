@@ -101,9 +101,9 @@
     var trows = {};
     var table = document.getElementById("timingtable");
     for (var i = 1, row; row = table.rows[i]; i++) {
-      var start = row.cells[0];
-      var stop = row.cells[1];
-      var position = row.cells[2];
+      var start = row.getElementsByName("start").value;
+      var stop = row.getElementsByName("stop").value;
+      var position = row.getElementsByName("position").value;
       trows[start] = {
         stop,
         position
