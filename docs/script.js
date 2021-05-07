@@ -41,8 +41,8 @@
     Papa.parse(event.target.result, {
       step: function(row) {
         console.log("Row:", row.data);
-        if (row.length === 3) {
-          addrow(row[0],row[1],row[2]);          
+        if (row.data.length === 3) {
+          addrow(row.data[0],row.data[1],row.data[2]);          
         }
       },
       complete: function() {
@@ -65,19 +65,19 @@
     rowcount++;
     var f1 = c1blank.cloneNode(true);
     f1.id = "start"+rowcount;
-    if (start != "") {
+    if (typeof start !== 'undefined') {
       f1.value = start;
     }
     cell1.appendChild(f1);
     var f2 = c2blank.cloneNode(true);
     f2.id = "stop"+rowcount;
-    if (stop != "") {
+    if (typeof stop !== 'undefined') {
       f2.value = stop;
     }
     cell2.appendChild(f2);
     var f3 = c3blank.cloneNode(true);
     f3.id = "position"+rowcount;
-    if (position != "") {
+    if (typeof position !== 'undefined') {
       f3.value = position;
     }
     cell3.appendChild(f3);
