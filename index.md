@@ -16,6 +16,7 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 <td><input type="text" id="end1" name="end" placeholder="00:01:04.630" /></td>
 <td><input type="text" id="position1" name="position" placeholder="left" /></td>
 </tr>
+</table>
 
 <button id="add-row">Add Row</button>
 
