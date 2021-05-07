@@ -113,7 +113,11 @@
     }
     var rows = sortObj(trows);
     console.log(rows);
-    window.location = 'data:application/vtt;charset=utf-8,' + data;
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'filename.vtt';
+    hiddenElement.click();
   }
 
 })();
