@@ -24,11 +24,12 @@ If recognized, the timings will be loaded into the form below once the file is u
 Use this form to adjust the positioning of the subtitles. You can specify start and stop times to allow the subtitles to move to different positions throughout the video.
 
 <table id="timingtable">
-<tr><th>Start</th><th>Stop</th><th>Position</th></tr>
+<tr><th>Start</th><th>Stop</th><th>Position</th><th></th></tr>
 <tr id="firstrow">
 <td><input type="text" id="start1" name="start" placeholder="00:01:02.980" /></td>
 <td><input type="text" id="stop1" name="end" placeholder="00:01:04.630" /></td>
 <td><input type="text" id="position1" name="position" placeholder="left" /></td>
+<td><a class="deleterow" href="#" onclick="removerow(this); return false;">❌</a></td>
 </tr>
 </table>
 
@@ -63,10 +64,12 @@ The VTT file will contain the same subtitles, but with added positioning informa
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
     rowcount++;
     cell1.innerHTML = '<input type="text" id="start'+rowcount+'" name="start" placeholder="00:01:02.980" />';
     cell2.innerHTML = '<input type="text" id="stop'+rowcount+'" name="start" placeholder="00:01:04.630" />';
     cell3.innerHTML = '<input type="text" id="position'+rowcount+'" name="start" placeholder="left" />';
+    cell4.innerHTML = '<a class="deleterow" href="#" onclick="removerow(this); return false;">❌</a>';
   }
   
   function handleSrtRead(event) {
@@ -74,6 +77,10 @@ The VTT file will contain the same subtitles, but with added positioning informa
     window.localStorage.setItem(srtfile, JSON.stringify(save));
   }
   
+  function removerow(element) {
+    element.closest("tr").remove();
+  }
+
   function getsrt() {
     return JSON.parse(localStorage.getItem(srtfile))
   }
