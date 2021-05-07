@@ -135,9 +135,7 @@
       };
     }
     var rows = sortObj(trows);
-    for (const [key, value] of Object.entries(trows)) {
-      console.log(`${key}: ${value}`);
-    }
+    
     var cycle = 0;
     for (var i = 0; i < srtlines.length; i++) {
       console.log(srtlines[i]);
