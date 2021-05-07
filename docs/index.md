@@ -57,6 +57,10 @@ The VTT file will contain the same subtitles, but with added positioning informa
 (function() {
   document.getElementById("convert").disabled = true;
 
+  function removerow(event) {
+    event.target.closest("tr").remove();
+  }
+
   var srtfile = 'captions.srt';
   document.querySelector('#srtupload').addEventListener('change', handleSrtUpload, false);
   document.querySelector('#add-row').addEventListener('click', addPositioningRow, false);
@@ -71,10 +75,6 @@ The VTT file will contain the same subtitles, but with added positioning informa
     document.getElementById("convert").disabled = false;
   }
 
-  function removerow(event) {
-    event.target.closest("tr").remove();
-  }
-
   var rowcount = 1;
   function addPositioningRow(event) {
     row = document.querySelector('#timingtable').insertRow(-1);
@@ -83,13 +83,13 @@ The VTT file will contain the same subtitles, but with added positioning informa
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     rowcount++;
-    cell1.innerHTML = document.getElementById('start1').innerHTML;
+    cell1 = document.getElementById('start1').cloneNode(true);
     cell1.id = "start"+rowcount;
-    cell2.innerHTML = document.getElementById('stop1').innerHTML;
+    cell2 = document.getElementById('stop1').cloneNode(true);
     cell2.id = "stop"+rowcount;
-    cell3.innerHTML = document.getElementById('position1').innerHTML;
+    cell3 = document.getElementById('position1').cloneNode(true);
     cell3.id = "position"+rowcount;
-    cell4.innerHTML = '<button class="deleterow" onClick="removerow(this);">❌</button>';
+    cell4.innerHTML = '<button class="deleterow">❌</button>';
   }
   
   function handleSrtRead(event) {
