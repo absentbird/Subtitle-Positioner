@@ -99,11 +99,13 @@
   function downloadVtt(event) {
     var data = localStorage.getItem(srtfile);
     var trows = {};
-    var table = document.getElementById("timingtable");
-    for (var i = 1, row; row = table.rows[i]; i++) {
-      var start = row.getElementsByName("start").value;
-      var stop = row.getElementsByName("stop").value;
-      var position = row.getElementsByName("position").value;
+    const starts = document.getElementsByName("start");
+    const stops = document.getElementsByName("stop");
+    const positions = document.getElementsByName("position");
+    for (var i = 0; i < starts.length; i++) {
+      var start = starts[i].value;
+      var stop = stops[i].value;
+      var position = positions[i].value;
       trows[start] = {
         stop,
         position
