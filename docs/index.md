@@ -29,7 +29,7 @@ Use this form to adjust the positioning of the subtitles. You can specify start 
 <td><input type="text" id="start1" name="start" placeholder="00:01:02.980" /></td>
 <td><input type="text" id="stop1" name="end" placeholder="00:01:04.630" /></td>
 <td><input type="text" id="position1" name="position" placeholder="left" /></td>
-<td><a class="deleterow" href="#" onclick="removerow(this); return false;">❌</a></td>
+<td><a class="deleterow" onClick="removerow(this); return false;" href="#" >❌</a></td>
 </tr>
 </table>
 
@@ -69,7 +69,7 @@ The VTT file will contain the same subtitles, but with added positioning informa
     cell1.innerHTML = '<input type="text" id="start'+rowcount+'" name="start" placeholder="00:01:02.980" />';
     cell2.innerHTML = '<input type="text" id="stop'+rowcount+'" name="start" placeholder="00:01:04.630" />';
     cell3.innerHTML = '<input type="text" id="position'+rowcount+'" name="start" placeholder="left" />';
-    cell4.innerHTML = '<a class="deleterow" href="#" onclick="removerow(this); return false;">❌</a>';
+    cell4.innerHTML = '<a class="deleterow" onClick="removerow(this); return false;" href="#" >❌</a>';
   }
   
   function handleSrtRead(event) {
