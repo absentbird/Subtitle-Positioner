@@ -7,11 +7,13 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 <label for="srtfile">SRT<sup>1</sup> file:</label>
 <input type="file" name="srtfile" id="srtupload">
 
-<sup>1</sup> An SRT is a basic subtitle file, it's essentially just a text file with timings for the captioning. Most tools support this format, and it's easy to work with. [Learn more about SRT here](https://en.wikipedia.org/wiki/SubRip).
+---
+
+An SRT is a basic subtitle file, it's essentially just a text file with timings for the captioning. Most tools support this format, and it's easy to work with. [Learn more about SRT here](https://en.wikipedia.org/wiki/SubRip).
 
 #### Upload Timing (optional)
 
-To save time you can upload a CSV<sup>2</sup> with positions. The file must have three columns: Start, Stop, and Position.
+To save time you can upload a CSV with positions. The file must have three columns: Start, Stop, and Position.
 
 **Start** and **Stop** should be times formatted as hh:mm:ss.sss.
 
@@ -22,7 +24,9 @@ If recognized, the timings will be loaded into the form below once the csv file 
 <label for="timingcsv">CSV timing file:</label>
 <input type="file" name="timingcsv" id="timingupload">
 
-<sup>2</sup> Most spreadsheets can be exported as a CSV file. Here are some popular options: [LibreOffice Calc](https://help.libreoffice.org/3.3/Calc/Importing_and_Exporting_CSV_Files), [Google Sheets](https://www.organimi.com/how-to-convert-a-csv-file-to-google-sheets/#:~:text=How%20to%20Export%20a%20File,the%20file%20as%20a%20CSV), [Microsoft Excel](https://support.microsoft.com/en-us/office/save-a-workbook-to-text-format-txt-or-csv-3e9a9d6c-70da-4255-aa28-fcacf1f081e6) 
+---
+
+Most spreadsheets can be exported as a CSV file. Here are some popular options: [LibreOffice Calc](https://help.libreoffice.org/3.3/Calc/Importing_and_Exporting_CSV_Files), [Google Sheets](https://www.organimi.com/how-to-convert-a-csv-file-to-google-sheets/#:~:text=How%20to%20Export%20a%20File,the%20file%20as%20a%20CSV), [Microsoft Excel](https://support.microsoft.com/en-us/office/save-a-workbook-to-text-format-txt-or-csv-3e9a9d6c-70da-4255-aa28-fcacf1f081e6) 
 
 ### Adjust Positioning
 
