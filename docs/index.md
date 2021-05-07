@@ -11,7 +11,8 @@ This is the base subtitle file, it's essentially just a text file with timings f
 
 #### Upload Timing (optional)
 
-To save time you can upload a CSV with positions. It should be formatted as follows: start, stop, position  
+To save time you can upload a CSV with positions. It should be formatted as follows:  
+start, stop, position  
 
 If recognized, the timings will be loaded into the form below once the file is uploaded.
 
