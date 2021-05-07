@@ -10,7 +10,7 @@ Youtube uses VTT files for subtitles with enhanced features such as positioning.
 ### Set Positioning
 
 <table id="timingtable">
-<tr><th>Start</th><th>End</th><th>Position</th></tr>
+<tr><th>Start</th><th>Stop</th><th>Position</th></tr>
 <tr id="firstrow">
 <td><input type="text" id="start1" name="start" placeholder="00:01:02.980" /></td>
 <td><input type="text" id="stop1" name="end" placeholder="00:01:04.630" /></td>
