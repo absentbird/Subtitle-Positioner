@@ -45,7 +45,7 @@
 
   function handleSrtUpload(event) {
     var file = event.target.files[0];
-    if (file.substr(file.length - 4) === ".srt") {
+    if (file.substring(file.length - 4) === ".srt") {
       outputname = file.name.slice(0, -4);
     } else {
       outputname = file.name;      
