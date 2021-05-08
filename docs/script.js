@@ -2,7 +2,7 @@
   document.getElementById("convert").disabled = true;
   var outputname = "filename";
 
-  var positionset = [
+  var positionset = {
     'top-left': " line:5% align:left",
     'top-center': " line:5%",
     'top-right': " line:5% align:right",
@@ -12,7 +12,7 @@
     'bottom-left': " align:left",
     'bottom-center': "",
     'bottom-right': " align:right"
-  ];
+  };
 
   function removerow(event) {
     event.srcElement.closest("tr").remove();
