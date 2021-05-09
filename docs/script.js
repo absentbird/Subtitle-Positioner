@@ -45,7 +45,7 @@
 
   function handleSrtUpload(event) {
     var file = event.target.files[0];
-    if (file.name.substring(file.length - 4) === ".srt") {
+    if (file.name.substring(file.name.length - 4).toLowerCase() === ".srt") {
       outputname = file.name.slice(0, -4);
     } else {
       outputname = file.name;      
@@ -182,7 +182,7 @@
       }
       if (cycle === 1) {
         cycle++;
-        var timerange = srtlines[i].replace(",", ".");
+        var timerange = srtlines[i].replace(/,/g, ".");
         var trts = ts2ms(timerange.substring(0,12));
         if (trts >= nextpos) {
           currentposition = timematrix[spoints[pos]];
