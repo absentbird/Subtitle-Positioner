@@ -158,7 +158,7 @@
       for (j = 0; j < ek.length; j++) {
         if (ek[j] <= nextts) {
           if (ek[j] === layers.length-1) {
-            timematrix[ek[j]] = layers[layers.length-1];
+            timematrix[ek[j]] = layers[layers.length-2];
           }
           layers.splice(endset[ek[j]], 1);
         }
