@@ -167,6 +167,9 @@
       }
     }
     var cycle = 0;
+    var spoints = Object.keys(timematrix).sort();
+    var pos = 0;
+    var nextpos = spoints[pos];
     for (var i = 0; i < srtlines.length; i++) {
       if (srtlines[i] === "") {
         cycle = 0;
@@ -181,10 +184,10 @@
         cycle++;
         var timerange = srtlines[i].replace(",", ".");
         var trts = ts2ms(timerange.substring(0,12));
-        if (trts >= nexts) {
+        if (trts >= nextpos) {
+          currentposition = timematrix[spoints[pos]];
           pos++
-          nexts = spoints[pos];
-          currentposition = positions[pos];
+          nextpos = spoints[pos];
         }
         data += timerange + currentposition + "\n";
         continue;
