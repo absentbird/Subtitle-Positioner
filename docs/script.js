@@ -149,18 +149,16 @@
         endset[ts2ms(end)] = layers.length;
       }
       var ek = Object.keys(endset).sort();
-      var nextts = timekeys[i];
+      var nextts = 0;
       if (i + 1 < timekeys.length) {
-        console.log(timekeys[i] + "\n" + timekeys[i+1])
         nextts = ts2ms(timekeys[i+1]);
       } else {
-        nextts = ek[ek.length];
+        nextts = ek[ek.length-1];
       }
       for (j = 0; j < ek.length; j++) {
         if (ek[j] <= nextts) {
-          if (ek[j] === layers.length) {
-            newpos = layers[layers.length-1];
-            timematrix[ek[j]] = newpos;
+          if (ek[j] === layers.length-1) {
+            timematrix[ek[j]] = layers[layers.length-1];
           }
           layers.splice(endset[ek[j]], 1);
         }
