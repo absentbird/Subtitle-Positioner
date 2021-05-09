@@ -157,7 +157,7 @@
             newpos = layers[layers.length-1];
             timematrix[ek[j]] = newpos;
           }
-          layers.splice(endset[ek[j], 1);
+          layers.splice(endset[ek[j]], 1);
         }
       }
     }
