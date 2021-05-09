@@ -157,7 +157,7 @@
       }
       for (j = 0; j < ek.length; j++) {
         if (ek[j] <= nextts) {
-          if (j === layers.length-1) {
+          if (endset[ek[j]] === layers.length-1) {
             console.log(layers[layers.length-2]);
             timematrix[ek[j]] = positionset[layers[layers.length-2]];
           }
