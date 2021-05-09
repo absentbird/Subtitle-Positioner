@@ -176,7 +176,7 @@
       if (cycle === 1) {
         cycle++;
         var timerange = srtlines[i].replace(",", ".");
-        var trts = ts2ms(timerange[0:12]);
+        var trts = ts2ms(timerange.substring(0,12));
         if (trts >= nexts) {
           pos++
           nexts = spoints[pos];
