@@ -149,8 +149,13 @@
       if (end != "") {
         endset[ts2ms(end)] = layers.length;
       }
-      nextts = ts2ms(timekeys[i+1]);
       var ek = Object.keys(endset).sort();
+      var nextts = timekeys[i];
+      if (i < timekeys.length) {
+        nextts = ts2ms(timekeys[i+1]);
+      } else {
+        nextts = ek[ek.length];
+      }
       for (j = 0; j < ek.length; j++) {
         if (ek[j] <= nextts) {
           if (ek[j] === layers.length) {
