@@ -68,7 +68,6 @@
   function handleCsvRead(event) {
     Papa.parse(event.target.result, {
       step: function(row) {
-        console.log("Row:", row.data);
         if (row.data.length === 3) {
           addrow(row.data[0],row.data[1],row.data[2]);          
         }
@@ -168,7 +167,6 @@
     }
     var cycle = 0;
     for (var i = 0; i < srtlines.length; i++) {
-      console.log(srtlines[i]);
       if (srtlines[i] === "") {
         cycle = 0;
         data += "\n";
@@ -196,7 +194,6 @@
         continue;
       }
     }    
-    var pattern = /(\d+)\n([\d:,]+)\s+-{2}\>\s+([\d:,]+)\n/gm;
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
     hiddenElement.target = '_blank';
