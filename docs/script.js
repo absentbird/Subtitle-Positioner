@@ -151,6 +151,7 @@
       var ek = Object.keys(endset).sort();
       var nextts = timekeys[i];
       if (i < timekeys.length + 1) {
+        console.log(timekeys.length + "\n" + timekeys[i] + "\n" + timekeys[i+1])
         nextts = ts2ms(timekeys[i+1]);
       } else {
         nextts = ek[ek.length];
