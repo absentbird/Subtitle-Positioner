@@ -59,6 +59,12 @@
     csvreader.readAsText(file);
   }
 
+  function ts2ms(timestamp) {
+    var t = timestamp.split(":");
+    seconds = (t[0]*3600)+(t[1]*60)+t[2];
+    return seconds*1000;
+  }
+
   function handleCsvRead(event) {
     Papa.parse(event.target.result, {
       step: function(row) {
@@ -111,13 +117,6 @@
     addrow();
   }
 
-  function sortObj(obj) {
-    return Object.keys(obj).sort().reduce(function (result, key) {
-      result[key] = obj[key];
-      return result;
-    }, {});
-  }
-
   function downloadVtt(event) {
     var data = localStorage.getItem(srtfile);
     data = "WEBVTT\n\n";
@@ -134,13 +133,40 @@
         position
       };
     }
-    var rows = sortObj(trows);
-    
+    var timekeys = Object.keys(trows).sort();
+    var timematrix = {0:positionset['bottom-center']};
+    var endset = {};
+    var layers = ['bottom-center'];
+    for (var i = 0; i < timekeys.length; i++) {
+      var pos = trows[timekeys[i]].position;
+      var ts = 0;
+      if (timekeys[i] != "") {
+        ts = ts2ms(timekeys[i])
+      }
+      timematrix[ts] = positionset[pos];
+      layers.push(pos);
+      end = trows[timekeys[i]].stop;
+      if (end != "") {
+        endset[ts2ms(end)] = layers.length;
+      }
+      nextts = ts2ms(timekeys[i+1]);
+      var ek = Object.keys(endset).sort();
+      for (j = 0; j < ek.length; j++) {
+        if (ek[j] <= nextts) {
+          if (ek[j] === layers.length) {
+            newpos = layers[layers.length-1];
+            timematrix[ek[j]] = newpos;
+          }
+          layers.splice(endset[ek[j], 1);
+        }
+      }
+    }
     var cycle = 0;
     for (var i = 0; i < srtlines.length; i++) {
       console.log(srtlines[i]);
       if (srtlines[i] === "") {
         cycle = 0;
+        data += "\n";
         continue;
       }
       if (cycle === 0) {
@@ -149,8 +175,14 @@
       }
       if (cycle === 1) {
         cycle++;
-        var ts = srtlines
-        data += srtlines[i] + "\n"
+        var timerange = srtlines[i].replace(",", ".");
+        var trts = ts2ms(timerange[0:12]);
+        if (trts >= nexts) {
+          pos++
+          nexts = spoints[pos];
+          currentposition = positions[pos];
+        }
+        data += timerange + currentposition + "\n";
         continue;
       }
       if (cycle >= 2) {
