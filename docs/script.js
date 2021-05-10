@@ -70,10 +70,9 @@
     if (t[2].length === 6) {
       seconds = parseInt(t[2].replace(".",""));
     } else {
-      seconds = Math.floor(parseFloat(t[2])*1000);
+      seconds = Number(t[2])*1000;
     }
     ms = Number(hours) + Number(minutes) + Number(seconds);
-    console.log(ms);
     return ms;
   }
 
@@ -157,24 +156,31 @@
       if (end > 0) {
         endset[end] = layers.length-1;
       }
-      var ek = Object.keys(endset).sort();
+      var ek = Object.keys(endset).sort(function(a, b){return a-b});
       var nextts = 0;
       if (i < timekeys.length-1) {
         nextts = ts2ms(timekeys[i+1]);
       } else {
         nextts = ek[ek.length-1];
       }
+      var chopblock = [];
       for (j = 0; j < ek.length; j++) {
         if (ek[j] <= nextts) {
           if (endset[ek[j]] === layers.length-1) {
             timematrix[ek[j]] = positionset[layers[layers.length-2]];
+            layers.pop();
+          } else {
+            chopblock.push(j);
           }
-          layers.splice(endset[ek[j]], 1);
         }
+      }
+      chopblock.sort(function(a, b){return a-b});
+      for (j = chopblock.length; j > 0; j--) {        
+        layers.splice(endset[ek[j]], 1);
       }
     }
     var cycle = 0;
-    var spoints = Object.keys(timematrix).sort();
+    var spoints = Object.keys(timematrix).sort(function(a, b){return a-b});
     var pos = 0;
     var nextpos = spoints[pos];
     for (var i = 0; i < srtlines.length; i++) {
@@ -192,7 +198,7 @@
         var timerange = srtlines[i].replace(/,/g, ".");
         var trts = ts2ms(timerange.substring(0,12));
         if (trts >= nextpos) {
-          currentposition = timematrix[spoints[pos]];
+          currentposition = timematrix[nextpos];
           pos++
           nextpos = spoints[pos];
         }
