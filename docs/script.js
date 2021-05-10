@@ -168,6 +168,7 @@
         if (ek[j] <= nextts) {
           tbr.push(endset[ek[j]]);
           if (endset[ek[j]] == layers.length-1) {
+            console.log(layers);
             pos = layers[layers.length-2];
             timematrix[ek[j]] = positionset[pos];
           }
@@ -220,7 +221,7 @@
     hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
     hiddenElement.target = '_blank';
     hiddenElement.download = outputname+'.vtt';
-    hiddenElement.click();
+    //hiddenElement.click();
   }
 
 })();
