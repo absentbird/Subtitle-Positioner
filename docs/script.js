@@ -64,16 +64,15 @@
       return 0;
     }
     var t = timestamp.split(":");
-    console.log(t);
-    var hours = parseInt(t[0])*3600000;
-    var minutes = parseInt(t[1])*60000;
+    var hours = parseInt(t[0])*3600*1000;
+    var minutes = parseInt(t[1])*60*1000;
     var seconds = 0;
     if (t[2].length === 6) {
-      seconds = t[2].replace(".","");
+      seconds = parseInt(t[2].replace(".",""));
     } else {
       seconds = Math.floor(parseFloat(t[2])*1000);
     }
-    ms = hours+minutes+seconds;
+    ms = Number(hours) + Number(minutes) + Number(seconds);
     console.log(ms);
     return ms;
   }
