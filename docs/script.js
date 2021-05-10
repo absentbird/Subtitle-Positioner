@@ -141,15 +141,11 @@
     var layers = ['bottom-center'];
     for (var i = 0; i < timekeys.length; i++) {
       var pos = trows[timekeys[i]].position;
-      var ts = 0;
-      if (timekeys[i] != "") {
-        ts = ts2ms(timekeys[i])
-      }
+      var ts = ts2ms(timekeys[i])
       timematrix[ts] = positionset[pos];
       layers.push(pos);
-      end = trows[timekeys[i]].stop;
-      if (end != "") {
-        endset[ts2ms(end)] = layers.length-1;
+      var end = ts2ms(trows[timekeys[i]].stop);
+        endset[end] = layers.length-1;
       }
       var ek = Object.keys(endset).sort();
       var nextts = 0;
@@ -199,6 +195,7 @@
         continue;
       }
     }
+    console.log(timematrix);
     console.log("Done adding positioning information to SRT.");
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
