@@ -163,20 +163,20 @@
       } else {
         nextts = ek[ek.length-1];
       }
-      var chopblock = [];
+      var tbr = [];
       for (j = 0; j < ek.length; j++) {
         if (ek[j] <= nextts) {
           if (endset[ek[j]] === layers.length-1) {
             timematrix[ek[j]] = positionset[layers[layers.length-2]];
             layers.pop();
           } else {
-            chopblock.push(j);
+            tbr.push(endset[ek[j]]);
           }
         }
       }
-      chopblock.sort(function(a, b){return a-b});
-      for (j = chopblock.length; j > 0; j--) {        
-        layers.splice(endset[ek[j]], 1);
+      tbr.sort(function(a, b){return a-b});
+      for (j = tbr.length; j > 0; j--) {        
+        layers.splice(tbr[j], 1);
       }
     }
     var cycle = 0;
