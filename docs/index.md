@@ -19,6 +19,8 @@ To save time you can upload a CSV with positions. The file must have three colum
 
 **Position** must be one of the following values: top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right
 
+[Here is a sample file](timings.csv) for demonstration.
+
 If recognized, the timings will be loaded into the form below once the csv file is selected.
 
 <label for="timingcsv">CSV timing file:</label>
