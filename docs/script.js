@@ -198,7 +198,8 @@
         data += srtlines[i] + "\n"
         continue;
       }
-    }    
+    }
+    console.log("Done adding positioning information to SRT.");
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
     hiddenElement.target = '_blank';
