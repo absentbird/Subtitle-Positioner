@@ -60,6 +60,9 @@
   }
 
   function ts2ms(timestamp) {
+    if (timestamp == "") {
+      return 0;
+    }
     var t = timestamp.split(":");
     seconds = (t[0]*3600)+(t[1]*60)+t[2];
     return seconds*1000;
@@ -132,7 +135,7 @@
         position
       };
     }
-    var timekeys = Object.keys(trows).sort();
+    var timekeys = Object.keys(trows);
     var timematrix = {0:positionset['bottom-center']};
     var endset = {};
     var layers = ['bottom-center'];
