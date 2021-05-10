@@ -146,11 +146,11 @@
       layers.push(pos);
       end = trows[timekeys[i]].stop;
       if (end != "") {
-        endset[ts2ms(end)] = layers.length;
+        endset[ts2ms(end)] = layers.length-1;
       }
       var ek = Object.keys(endset).sort();
       var nextts = 0;
-      if (i + 1 < timekeys.length) {
+      if (i < timekeys.length-1) {
         nextts = ts2ms(timekeys[i+1]);
       } else {
         nextts = ek[ek.length-1];
