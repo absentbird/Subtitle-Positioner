@@ -155,7 +155,7 @@
       var end = ts2ms(trows[timekeys[i]].stop);
       if (end > 0) {
         console.log(end)
-        endset[end] = i+1;
+        endset[end] = layers.length-1;
       }
       var ek = Object.keys(endset).sort(function(a, b){return a-b});
       var nextts = 0;
@@ -174,8 +174,12 @@
         }
       }
       tbr.sort(function(a, b){return a-b});
-      for (j = tbr.length; j >= 0; j--) {        
-        layers.splice(tbr[j], 1);
+      for (j = tbr.length; j >= 0; j--) {
+        if (tbr[j] === layers.length-1) {
+          layers.pop();
+        } else {
+          layers.splice(tbr[j], 1);
+        }
       }
     }
     var cycle = 0;
