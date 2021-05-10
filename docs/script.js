@@ -143,7 +143,7 @@
         position
       };
     }
-    var timekeys = Object.keys(trows);
+    var timekeys = Object.keys(trows).sort(function(a, b){return ts2ms(a)-ts2ms(b)});;
     var timematrix = {0:positionset['bottom-center']};
     var endset = {};
     var layers = ['bottom-center'];
