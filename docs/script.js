@@ -168,10 +168,8 @@
         if (ek[j] <= nextts) {
           if (endset[ek[j]] === layers.length-1) {
             timematrix[ek[j]] = positionset[layers[layers.length-2]];
-            layers.pop();
-          } else {
-            tbr.push(endset[ek[j]]);
           }
+          tbr.push(endset[ek[j]]);
         }
       }
       tbr.sort(function(a, b){return a-b});
