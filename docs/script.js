@@ -173,7 +173,7 @@
         }
       }
       tbr.sort(function(a, b){return a-b});
-      for (j = tbr.length; j > 0; j--) {        
+      for (j = tbr.length; j >= 0; j--) {        
         layers.splice(tbr[j], 1);
       }
     }
