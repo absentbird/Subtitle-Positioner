@@ -65,7 +65,7 @@
     }
     var t = timestamp.split(":");
     console.log(t);
-    seconds = (int(t[0])*3600)+(int(t[1])*60)+float(t[2]);
+    seconds = (parseInt(t[0])*3600)+(parseInt(t[1])*60)+parseFloat(t[2]);
     console.log(seconds);
     return seconds*1000;
   }
