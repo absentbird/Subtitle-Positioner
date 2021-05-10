@@ -154,7 +154,6 @@
       layers.push(pos);
       var end = ts2ms(trows[timekeys[i]].stop);
       if (end > 0) {
-        console.log(end)
         endset[end] = layers.length-1;
       }
       var ek = Object.keys(endset).sort(function(a, b){return a-b});
@@ -167,10 +166,11 @@
       var tbr = [];
       for (j = 0; j < ek.length; j++) {
         if (ek[j] <= nextts) {
-          if (endset[ek[j]] === layers.length-1) {
-            timematrix[ek[j]] = positionset[layers[layers.length-2]];
-          }
           tbr.push(endset[ek[j]]);
+          if (endset[ek[j]] == layers.length-1) {
+            pos = layers[layers.length-2];
+            timematrix[ek[j]] = positionset[pos];
+          }
         }
       }
       tbr.sort(function(a, b){return a-b});
