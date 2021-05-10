@@ -179,7 +179,7 @@
         if (tbr[j] === layers.length-1) {
           layers.pop();
         } else {
-          layers.splice(tbr[j], 1);
+          layers.splice(tbr[j]+1, 1);
         }
       }
     }
