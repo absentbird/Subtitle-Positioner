@@ -65,9 +65,17 @@
     }
     var t = timestamp.split(":");
     console.log(t);
-    seconds = (parseInt(t[0])*3600)+(parseInt(t[1])*60)+parseFloat(t[2]);
-    console.log(seconds);
-    return seconds*1000;
+    var hours = parseInt(t[0])*3600000;
+    var minutes = parseInt(t[1])*60000;
+    var seconds = 0;
+    if (t[2].length === 6) {
+      seconds = t[2].replace(".","");
+    } else {
+      seconds = Math.floor(parseFloat(t[2])*1000);
+    }
+    ms = hours+minutes+seconds;
+    console.log(ms);
+    return ms;
   }
 
   function handleCsvRead(event) {
