@@ -172,11 +172,12 @@
             console.log(layers);
             for (k = layers.length; k >= 0; k--) {
               if (expired[k] === true) {
-                continue
+                continue;
               } else {
-                pos = layers[layers.length-2];
+                pos = layers[k];
                 timematrix[ek[j]] = positionset[pos];
               }
+            }
           }
         }
       }
