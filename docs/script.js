@@ -169,7 +169,6 @@
         if (ek[j] <= nextts) {
           expired[endset[ek[j]]] = true;
           if (endset[ek[j]] == layers.length-1) {
-            console.log(layers);
             for (k = layers.length; k >= 0; k--) {
               if (expired[k] === true) {
                 continue;
@@ -214,13 +213,12 @@
         continue;
       }
     }
-    console.log(timematrix);
     console.log("Done adding positioning information to SRT.");
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(data);
     hiddenElement.target = '_blank';
     hiddenElement.download = outputname+'.vtt';
-    //hiddenElement.click();
+    hiddenElement.click();
   }
 
 })();
