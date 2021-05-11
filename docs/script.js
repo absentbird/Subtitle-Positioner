@@ -147,6 +147,7 @@
     var timematrix = {0:positionset['bottom-center']};
     var endset = {};
     var layers = ['bottom-center'];
+    var expired = {};
     for (var i = 0; i < timekeys.length; i++) {
       var pos = trows[timekeys[i]].position;
       var ts = ts2ms(timekeys[i])
@@ -166,15 +167,20 @@
       var tbr = [];
       for (j = 0; j < ek.length; j++) {
         if (ek[j] <= nextts) {
-          tbr.push(endset[ek[j]]);
+          expired[endset[ek[j]]] = true;
           if (endset[ek[j]] == layers.length-1) {
             console.log(layers);
-            pos = layers[layers.length-2];
-            timematrix[ek[j]] = positionset[pos];
+            for (k = layers.length; k >= 0; k--) {
+              if (expired[k] === true) {
+                continue
+              } else {
+                pos = layers[layers.length-2];
+                timematrix[ek[j]] = positionset[pos];
+              }
           }
         }
       }
-      tbr.sort(function(a, b){return a-b});
+      expired.sort(function(a, b){return a-b});
       for (j = tbr.length; j >= 0; j--) {
         if (tbr[j] === layers.length-1) {
           layers.pop();
