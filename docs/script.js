@@ -181,14 +181,6 @@
           }
         }
       }
-      expired.sort(function(a, b){return a-b});
-      for (j = tbr.length; j >= 0; j--) {
-        if (tbr[j] === layers.length-1) {
-          layers.pop();
-        } else {
-          layers.splice(tbr[j]+1, 1);
-        }
-      }
     }
     var cycle = 0;
     var spoints = Object.keys(timematrix).sort(function(a, b){return a-b});
