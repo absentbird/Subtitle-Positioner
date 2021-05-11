@@ -40,7 +40,6 @@
     allLines.forEach((line) => {
         srtlines.push(line);
     });
-    window.localStorage.setItem(srtfile, file);
   };
 
   function handleSrtUpload(event) {
@@ -128,8 +127,7 @@
   }
 
   function downloadVtt(event) {
-    var data = localStorage.getItem(srtfile);
-    data = "WEBVTT\n\n";
+    var data = "WEBVTT\n\n";
     var trows = {};
     const starts = document.getElementsByName("start");
     const stops = document.getElementsByName("stop");
